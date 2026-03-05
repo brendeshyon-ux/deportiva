@@ -27,16 +27,59 @@ body {
 .services h2,
 .product-showcase h2,
 #formularioContacto h2 {
-  font-size: 2.5rem;
   color: var(--primary-color);
+  font-size: 2.5rem;
   text-align: center;
   margin: 0;
-  padding: 60px 0;
+  padding: 90px 0px 50px 0px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
 }
+
+/* ------------------ NAVBAR------------------ */
+
+.main-header {
+  background-color: var(--bg-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+nav a {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+.cart-icon {
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cart-icon:hover {
+  color: var(--primary-color);
+}
+
 
 /* ------------------ HERO ------------------ */
 
@@ -179,84 +222,6 @@ body {
   margin: 0;
 }
 
-/* --------------- Estilos del Carrito Lateral ---------------*/
-.side-cart {
-  position: fixed;
-  right: -450px;
-  top: 0;
-  width: 400px;
-  height: 100vh;
-  background: rgba(7, 14, 23, 0.98);
-  backdrop-filter: blur(20px);
-  z-index: 2000;
-  transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  border-left: 1px solid var(--primary-color);
-}
-
-.side-cart.active {
-  right: 0;
-}
-
-#cart-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  z-index: 1999;
-}
-
-#cart-overlay.active {
-  display: block;
-}
-
-.cart-header {
-  color: var(--primary-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 20px;
-}
-
-.close-cart {
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.cart-items-container {
-  flex-grow: 1;
-  overflow-y: auto;
-  margin-top: 20px;
-}
-
-.cart-item {
-  color: var(--primary-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-.total-row {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 20px;
-  border-top: 2px solid var(--primary-color);
-}
-
-/* Estilo de Tarjetas tipo "Pepsi" de la imagen */
 .product-card {
   perspective: 1000px;
   padding: 5px;
@@ -318,18 +283,18 @@ body {
   transition: 0.3s;
 }
 
-/* ------------------ Carrito Lateral -------------------- */
+/* --------------- CARRITO LATERAL ---------------*/
 .side-cart {
+  border-left: 1px solid var(--primary-color);
   position: fixed;
   right: -400px;
   top: 0;
   width: 350px;
   height: 100vh;
-  background: rgba(7, 14, 23, 0.95);
   backdrop-filter: blur(20px);
   z-index: 1000;
-  transition: 0.4s ease;
-  padding: 20px;
+  transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  padding: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -339,9 +304,9 @@ body {
 }
 
 #cart-overlay {
+  background: rgba(0, 0, 0, 0.3);
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
   display: none;
   z-index: 999;
 }
@@ -350,29 +315,233 @@ body {
   display: block;
 }
 
-.cart-item {
+/* ---- TITULO CARRITO LATERAL ----*/
+
+.cart-header {
+  color: var(--primary-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--primary-color);
+  padding-bottom: 15px;
+  padding: 0 10px 15px 10px;
+}
+
+.close-cart {
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ---- TARJETA DE COMPRAS LATERAL ----*/
+
+.cart-items-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 15px;
+}
+
+.cart-item {
+  color: var(--bg-dark);
+  background: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 8px 15px;
 }
 
 .remove-btn {
+  color: var(--bg-dark);
   background: var(--primary-color);
   border: none;
-  color: var(--bg-dark);
-  padding: 5px 10px;
+  padding: 2px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
 
+.total-row {
+  color: var(--primary-color);
+  border-top: 2px solid var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px 0 10px;
+}
 
-/* ------------------ CONTACTO------------------ */
+/* Botón carrito lateral */
+.cart-footer .btn-primary {
+  color: var(--bg-dark) !important;
+  background: var(--primary-color);
+  border: none !important;
+  height: 50px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cart-footer .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.3);
+  filter: brightness(1.1);
+}
+
+/* ----------------------- CONTACTO ----------------------------- */
+
+.contact-section {
+  background-color: var(--bg-dark);
+  padding: 120px 0;
+}
+
+.contact-container {
+  display: flex;
+  gap: 50px;
+  align-items: stretch;
+  width: 100%;
+  max-width: var(--sf-max-width);
+  margin: 0 auto;
+}
+
+.contact-info, 
+.contact-form-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info {
+  color: var(--text-color);
+  flex: 1;
+}
+
+.contact-info h2 {
+  color: var(--primary-color);
+  text-align: left !important;
+  padding: 0 0 20px 0 !important;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: 0.3s;
+}
+
+.glass-card i {
+  color: var(--primary-color);
+  background: rgba(0, 229, 255, 0.1);
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.glass-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--sf-muted);
+}
+
+.glass-card p {
+  margin: 0;
+  color: white;
+  font-weight: 600;
+}
+
+.glass-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+  transform: translateX(10px);
+}
+
+/* Panel del Formulario */
+.contact-form-panel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  /* Bordes y sombras con luz */
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 25px 50px rgba(0, 229, 255, 0.2),
+    inset 0 0 15px rgba(255, 255, 255, 0.05);
+
+  transition: all 0.3s ease;
+}
+
+.contact-form-panel:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+}
+
+.contact-form-panel form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 415px;
+}
+
+.contact-form-panel .form-label {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.contact-form-panel .form-control {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: var(--primary-color);
+  backdrop-filter: blur(5px);
+}
+
+.contact-form-panel .form-control:focus {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+  outline: none;
+}
+
+.contact-form-panel .form-control::placeholder {
+  color: rgba(0, 229, 255, 0.4);
+  font-style: italic;
+}
+
+/* Botón formulario */
+.contact-form-panel .btn-primary {
+  color: var(--bg-dark) !important;
+  background: linear-gradient(45deg, #0099aa, var(--primary-color)) !important;
+  border: none !important;
+  height: 50px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-form-panel .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.5);
+  filter: brightness(1.1);
+}
 
 
+/* ----------------------- FOOTER ----------------------------- */
 
-/* Footer */
 .sf-footer {
   background: var(--bg-dark);
   color: var(--sf-contrast);
@@ -381,7 +550,6 @@ body {
   border-top: 5px solid var(--primary-color);
 }
 
-/* Contenedor central */
 .sf-container {
   max-width: var(--sf-max-width);
   margin: 0 auto;
@@ -444,7 +612,6 @@ body {
   font-size: 1rem;
 }
 
-/* Los enlaces dentro del footer también deben usar el color claro */
 .sf-link {
   color: var(--sf-muted);
   text-decoration: none;
@@ -452,16 +619,14 @@ body {
   transition: color 0.3s;
 }
 
-/* El texto legal inferior también necesita buen contraste */
 .sf-legal-text {
+  color: var(--primary-color);
   margin: 0;
-  color: var(--sf-muted);
   font-size: 0.95rem;
 }
 
 /* Enlaces rápidos */
 .sf-links-list li {
-  /*Más espacio entre ítems de enlaces */
   margin-bottom: 0.8rem;
 }
 
@@ -483,7 +648,6 @@ body {
   display: flex;
   gap: 0.8rem;
   align-items: center;
-  /* Más espacio arriba de los íconos sociales */
   margin-top: 1rem;
 }
 
@@ -526,10 +690,9 @@ body {
 
 /* Línea legal inferior */
 .sf-legal {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  /*Más espacio entre la parte principal del footer y la línea legal */
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  border-top: 1px solid var(--primary-color);
+  margin-top: 1rem;
+  padding-top: 1rem;
   text-align: center;
 }
 
@@ -539,163 +702,8 @@ body {
   font-size: 0.95rem;
 }
 
+/* ----------------- RESPONSIVE ----------------- */
 
-
-
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  /* CAMBIO: Header oscuro */
-  background-color: var(--bg-dark);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo {
-  font-size: 1.8em;
-  font-weight: 700;
-  /*Color de acento para el logo */
-  color: var(--primary-color);
-}
-
-nav a {
-  text-decoration: none;
-  /*Texto claro en la navegación */
-  color: var(--text-color);
-  margin-left: 20px;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: var(--primary-color);
-}
-
-/* Estilo para el ícono y contador del carrito */
-.cart-icon {
-  color: var(--text-color);
-  font-weight: 600;
-}
-
-
-
-
-
-
-/* ESTILOS PARA FORMULARIO DE CONTACTO */
-.container#formularioContacto {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: left;
-  background-color: var(--bg-dark);
-  color: var(--text-color);
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
-/* ESTILOS PARA FORMULARIO DE CONTACTO */
-.container#formularioContacto {
-  /* Mantengo el ancho original que tenías especificado en tu CSS, pero lo centré con max-width */
-  width: 60%;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: left;
-  background-color: var(--bg-dark);
-  /* Asegurando el fondo oscuro */
-  color: var(--text-color);
-  padding-top: 60px;
-  /* Asegurar espaciado */
-}
-
-.form-label {
-  color: var(--text-color);
-  font-weight: 600;
-}
-
-/* Sobrescribir estilos de Bootstrap para inputs oscuros */
-.form-control {
-  background-color: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-color);
-}
-
-.form-control::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.form-control:focus {
-  background-color: var(--card-bg);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(0, 229, 255, 0.25);
-  color: var(--text-color);
-}
-
-/* Botón primario de Bootstrap */
-.btn-primary {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: var(--bg-dark) !important;
-  padding: 10px 30px;
-  border-radius: 50px;
-  font-weight: 700;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.btn-primary:hover {
-  background-color: #00c7e0 !important;
-  border-color: #00c7e0 !important;
-}
-
-.confirmation-message {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--primary-color);
-  color: var(--bg-dark);
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-weight: 700;
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.confirmation-message.show {
-  opacity: 1;
-}
-
-
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    margin-top: 10px;
-  }
-
-  nav a {
-    margin: 0 10px 0 0;
-  }
-
-  .hero h1 {
-    font-size: 2.5em;
-  }
-
-  .service-grid {
-    flex-direction: column;
-  }
-
-  .service-item {
-    flex-basis: 100%;
-    margin-bottom: 20px;
-  }
-}
 
 @media (max-width: 720px) {
   .sf-container {

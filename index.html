@@ -17,12 +17,12 @@
     <header class="main-header">
         <div class="logo">SportFlow</div>
         <nav>
-            <a href="#productos">Productos</a>
             <a href="#servicios">Servicios</a>
-            <a href="#formularioContacto">Contacto</a>
+            <a href="#productos">Productos</a>
+            <a href="#contacto">Contacto</a>
         </nav>
         <div class="cart-icon">
-            <i class="bi bi-cart-check-fill"></i> Carrito (<span id="cart-count">0</span>)
+            <i class="bi bi-cart-check-fill"></i> Carrito <span id="cart-count" class="cart-count">0</span>
         </div>
     </header>
 
@@ -144,26 +144,67 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-        <div class="container" id="formularioContacto">
-            <h2>Contactanos!</h2>
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre(s)</label>
-                <input type="name" class="form-control" id="nameInput1" placeholder="Jane">
+
+        <section id="contacto" class="contact-section">
+            <div class="sf-container contact-container">
+                <div class="contact-info">
+                    <h2>PONTE EN CONTACTO</h2>
+                    <p>Nuestro equipo está listo para responder tus dudas y ayudarte a llevar tu entrenamiento al
+                        siguiente nivel.</p>
+
+                    <div class="info-cards">
+                        <div class="glass-card">
+                            <i class="bi bi-geo-alt"></i>
+                            <div>
+                                <h4>Sede Central</h4>
+                                <p>Av. Deportiva 123, Ciudad de México</p>
+                            </div>
+                        </div>
+                        <div class="glass-card">
+                            <i class="bi bi-telephone"></i>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+52 (55) 555-FLOW</p>
+                            </div>
+                        </div>
+                        <div class="glass-card">
+                            <i class="bi bi-envelope"></i>
+                            <div>
+                                <h4>Correo</h4>
+                                <p>contacto@sportflow.mx</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <form id="formularioContacto">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Tu nombre">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Apellido</label>
+                                <input type="text" class="form-control" placeholder="Tu apellido">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" placeholder="correo@ejemplo.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mensaje</label>
+                            <textarea class="form-control" rows="4"
+                                placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            Enviar Mensaje <i class="bi bi-send ms-2"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo eléctronico</label>
-                <input type="email" class="form-control" id="correoInput1" placeholder="correo@ejemplo.com">
-            </div>
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Telefono</label>
-                <input type="tel" class="form-control" id="telefonoInput1" placeholder="+(52) xxx xxx xxxx">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-                <textarea class="form-control" id="mensajeTextarea1" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </div>
+        </section>
 
 
 
@@ -178,29 +219,13 @@
                 <p class="sf-tagline">Movimiento. Ritmo. Flow.</p>
             </div>
 
-            <!-- Contacto -->
-            <div class="sf-contact">
-                <h3 class="sf-heading">Contacto</h3>
-                <ul class="sf-contact-list">
-                    <li class="sf-contact-item">
-                        <span class="sf-contact-label">Tel:</span>
-                        <a href="tel:+525512345678" class="sf-contact-link">+52 55 1234 5678</a>
-                    </li>
-                    <li class="sf-contact-item">
-                        <span class="sf-contact-label">Email:</span>
-                        <a href="mailto:hola@sportflow.mx" class="sf-contact-link">hola@sportflow.mx</a>
-                    </li>
-                </ul>
-            </div>
 
             <!-- Enlaces rápidos -->
             <nav class="sf-links" aria-label="Enlaces del pie de página">
                 <h3 class="sf-heading">Enlaces</h3>
-                <ul class="sf-links-list">
-                    <li><a href="/faq" class="sf-link">Preguntas frecuentes</a></li>
-                    <li><a href="/terminos" class="sf-link">Términos y condiciones</a></li>
-                    <li><a href="/privacidad" class="sf-link">Política de privacidad</a></li>
-                    <li><a href="/envios" class="sf-link">Envíos y devoluciones</a></li>
+                <ul class="sf-links-list">  
+                    <li><a  class="sf-link">Términos y condiciones</a></li>
+                    <li><a  class="sf-link">Política de privacidad</a></li>
                 </ul>
             </nav>
 
@@ -209,9 +234,8 @@
                 <h3 class="sf-heading">Síguenos</h3>
                 <ul class="sf-social-list">
                     <li>
-                        <a href="https://www.facebook.com/tu-perfil" target="_blank" rel="noopener noreferrer"
+                        <a target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook Sport Flow" class="sf-social-link">
-                            <!-- Ícono Facebook (SVG) -->
                             <svg class="sf-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <title>Facebook</title>
                                 <path
@@ -220,24 +244,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/tu-perfil" target="_blank" rel="noopener noreferrer"
+                        <a target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram Sport Flow" class="sf-social-link">
-                            <!-- Ícono Instagram (SVG) -->
                             <svg class="sf-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <title>Instagram</title>
                                 <path
                                     d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zm6.4-3.6a1.12 1.12 0 1 0 1.12 1.12A1.12 1.12 0 0 0 18.4 4.6z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.tiktok.com/@tu-perfil" target="_blank" rel="noopener noreferrer"
-                            aria-label="TikTok Sport Flow" class="sf-social-link">
-                            <!-- Ícono TikTok (SVG) -->
-                            <svg class="sf-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                <title>TikTok</title>
-                                <path
-                                    d="M16.5 3v7.1a4.4 4.4 0 0 1-4.4 4.4A4.4 4.4 0 0 1 7.7 10.5 4.4 4.4 0 0 1 12.1 6v1.8a2.6 2.6 0 1 0 2.6 2.6V3h1.8z" />
                             </svg>
                         </a>
                     </li>
