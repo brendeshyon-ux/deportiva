@@ -1,23 +1,13 @@
 :root {
-  /* Colores base para esquema oscuro */
   --primary-color: #00e5ff;
-  /* Cian brillante para acentos */
-  --secondary-color: #007bff;
-  /* Azul de botón más profundo */
+  --secondary-color: #00FFFF;
   --text-color: #f0f0f0;
-  /* Texto principal claro */
   --bg-dark: #070e17;
-  /* Fondo principal muy oscuro (casi negro) */
   --bg-light: #18202b;
-  /* Fondo para secciones 'claras' o secundarias */
   --card-bg: #1c2530;
-  /* Fondo de tarjetas y formularios */
 
-  /* Variables de Texto y Contraste (para sf- y p) */
   --sf-contrast: var(--text-color);
-  /* Texto en footer y headers: #f0f0f0 */
   --sf-muted: #bfc9d6;
-  /* Texto secundario (enlaces, tags): Gris claro para mejor contraste */
   --sf-accent: var(--primary-color);
   --sf-max-width: 1200px;
 }
@@ -30,12 +20,363 @@ body {
   color: var(--text-color);
 }
 
+
+/* ------------------ BODY - TITULOS ------------------ */
+
+
+.services h2,
+.product-showcase h2,
+#formularioContacto h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin: 0;
+  padding: 60px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+/* ------------------ HERO ------------------ */
+
+.hero {
+  background: url('../assets/licensed-image.jpg') no-repeat center center/cover;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.65);
+}
+
+.hero-content {
+  z-index: 10;
+}
+
+.hero-content h1 {
+  background: linear-gradient(to right, #fff 20%, var(--primary-color) 40%, var(--primary-color) 60%, #fff 80%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+  font-size: 3.5em;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--bg-dark);
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 25px;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.6);
+}
+
+/* ------------------TARJETAS DE SERVICIOS  ------------------ */
+
+.service-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  flex-basis: 30%;
+  min-width: 280px;
+  padding: 40px 30px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+
+  /* Efecto Cristal (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+
+  transition: all 0.4s ease;
+
+  color: var(--primary-color);
+}
+
+.service-item h3 {
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  margin-bottom: 15px;
+}
+
+/* El resplandor inferior (Glow) */
+.service-item::before {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: var(--secondary-color);
+  filter: blur(40px);
+  opacity: 0.4;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+}
+
+.service-item:hover::before {
+  opacity: 0.7;
+}
+
+/* ------------------ PRODUCTOS ------------------ */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.precio {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+/* --------------- Estilos del Carrito Lateral ---------------*/
+.side-cart {
+  position: fixed;
+  right: -450px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: rgba(7, 14, 23, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 2000;
+  transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--primary-color);
+}
+
+.side-cart.active {
+  right: 0;
+}
+
+#cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 1999;
+}
+
+#cart-overlay.active {
+  display: block;
+}
+
+.cart-header {
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.cart-items-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.cart-item {
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.total-row {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 2px solid var(--primary-color);
+}
+
+/* Estilo de Tarjetas tipo "Pepsi" de la imagen */
+.product-card {
+  perspective: 1000px;
+  padding: 5px;
+  display: flex;
+}
+
+.product-info h3 {
+  font-size: 1.7rem;
+}
+
+.product-glass {
+  background: var(--card-bg);
+  color: var(--primary-color);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--secondary-color);
+  border-radius: 25px;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.floating-img {
+  width: 90%;
+  height: auto;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+  transform: translateY(-10px) rotate(-5deg);
+  transition: 0.4s;
+}
+
+.product-glass:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.9);
+}
+
+.product-glass:hover .floating-img {
+  transform: translateY(-30px) rotate(5deg) scale(1.1);
+}
+
+/* Botón circular de añadir */
+.add-btn-circle {
+  background: var(--primary-color);
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #000;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+/* ------------------ Carrito Lateral -------------------- */
+.side-cart {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 350px;
+  height: 100vh;
+  background: rgba(7, 14, 23, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  transition: 0.4s ease;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-cart.active {
+  right: 0;
+}
+
+#cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 999;
+}
+
+#cart-overlay.active {
+  display: block;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.remove-btn {
+  background: var(--primary-color);
+  border: none;
+  color: var(--bg-dark);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* ------------------ CONTACTO------------------ */
+
+
+
 /* Footer */
 .sf-footer {
   background: var(--bg-dark);
   color: var(--sf-contrast);
   font-family: 'Poppins', sans-serif;
-  /* Reducimos padding vertical*/
   padding: 2rem 1rem !important;
   border-top: 5px solid var(--primary-color);
 }
@@ -46,9 +387,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  /* Aumentar el espacio entre columnas */
   gap: 3rem;
-  /* De 2rem a 3rem */
   align-items: flex-start;
   justify-content: space-between;
 }
@@ -68,14 +407,11 @@ body {
 }
 
 .sf-tagline {
-  /*Pequeño ajuste en el margen superior de la tagline */
   margin: 0.75rem 0 0;
-  /* De 0.5rem a 0.75rem */
   color: var(--sf-muted);
   font-size: 0.95rem;
 }
 
-/* Contacto, enlaces y social comparten estilo de columnas */
 .sf-contact,
 .sf-links,
 .sf-social {
@@ -85,9 +421,7 @@ body {
 
 /* Encabezados de sección */
 .sf-heading {
-  /* CAMBIO: Más espacio debajo del encabezado */
   margin: 0 0 1.2rem 0;
-  /* De 1rem a 1.2rem */
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary-color);
@@ -105,7 +439,6 @@ body {
 /* Contacto y Enlaces (Listas) */
 .sf-contact-item,
 .sf-links-list li {
-  /* Aseguramos que el texto secundario sea claro y legible */
   color: var(--sf-muted);
   margin-bottom: 0.8rem;
   font-size: 1rem;
@@ -206,33 +539,8 @@ body {
   font-size: 0.95rem;
 }
 
-/* Responsive: columnas a una sola en pantallas pequeñas */
-@media (max-width: 720px) {
-  .sf-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
 
-  .sf-brand {
-    order: 0;
-  }
 
-  .sf-contact {
-    order: 1;
-  }
-
-  .sf-links {
-    order: 2;
-  }
-
-  .sf-social {
-    order: 3;
-  }
-
-  .sf-social-list {
-    justify-content: flex-start;
-  }
-}
 
 .main-header {
   display: flex;
@@ -272,74 +580,10 @@ nav a:hover {
   font-weight: 600;
 }
 
-.hero {
-  background: url('../assets/licensed-image.jpg') no-repeat center center/cover;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  position: relative;
-  /* Overlay más oscuro para que el texto resalte */
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.65);
-}
 
-.hero-content {
-  z-index: 10;
-}
 
-.hero h1 {
-  font-size: 3.5em;
-  margin-bottom: 10px;
-  /* GRADIENTE: Título principal con gradiente para destacar */
-  background: linear-gradient(90deg, #fff, var(--primary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
-.cta-button {
-  display: inline-block;
-  /* Botón de acento brillante */
-  background-color: var(--primary-color);
-  color: var(--bg-dark);
-  /* Texto oscuro en botón brillante */
-  padding: 15px 40px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  margin-top: 25px;
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
-}
 
-.cta-button:hover {
-  background-color: #00c7e0;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.6);
-}
-
-.product-showcase,
-.services {
-  padding: 60px 5%;
-  text-align: center;
-}
-
-/* Estilo para todos los títulos de sección principales */
-.product-showcase h2,
-.services h2,
-#formularioContacto h2 {
-  font-size: 2.5em;
-  color: var(--primary-color);
-  margin-bottom: 40px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 30px;
-}
 
 /* ESTILOS PARA FORMULARIO DE CONTACTO */
 .container#formularioContacto {
@@ -350,104 +594,6 @@ nav a:hover {
   color: var(--text-color);
   padding-top: 60px;
   padding-bottom: 60px;
-}
-
-/* Para el fondo completo*/
-.product-showcase,
-.services {
-  padding: 60px 5%;
-  /* Mantenemos este padding para los lados */
-  text-align: center;
-}
-
-.product-card {
-  /*Fondo de tarjeta oscura */
-  background-color: var(--card-bg);
-  border: 1px solid rgba(0, 229, 255, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
-  padding-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-8px);
-  /* Sombra de acento para el hover */
-  box-shadow: 0 12px 25px rgba(0, 229, 255, 0.15);
-}
-
-.product-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  margin-bottom: 15px;
-  /* Borde inferior con color de acento */
-  border-bottom: 3px solid var(--primary-color);
-}
-
-.product-info h3 {
-  font-size: 1.4em;
-  margin-bottom: 8px;
-  color: var(--sf-contrast);
-}
-
-.price {
-  font-size: 1.6em;
-  font-weight: 700;
-  /*Precio con color de acento */
-  color: var(--primary-color);
-  margin-bottom: 20px;
-}
-
-.add-btn {
-  /*Botón de acento oscuro */
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.add-btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-.service-item p {
-  color: var(--sf-muted);
-}
-
-.service-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.service-item {
-  flex-basis: 30%;
-  min-width: 280px;
-  padding: 30px;
-  /* Fondo oscuro de las tarjetas */
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  /* Borde izquierdo con color de acento */
-  border-left: 5px solid var(--primary-color);
-}
-
-.service-item h3 {
-  color: var(--primary-color);
-  margin-bottom: 15px;
-}
-
-.service-item p {
-  color: var(--sf-muted);
 }
 
 /* ESTILOS PARA FORMULARIO DE CONTACTO */
@@ -522,7 +668,7 @@ nav a:hover {
   opacity: 1;
 }
 
-/* Media Queries */
+
 @media (max-width: 768px) {
   .main-header {
     flex-direction: column;
@@ -548,5 +694,32 @@ nav a:hover {
   .service-item {
     flex-basis: 100%;
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .sf-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sf-brand {
+    order: 0;
+  }
+
+  .sf-contact {
+    order: 1;
+  }
+
+  .sf-links {
+    order: 2;
+  }
+
+  .sf-social {
+    order: 3;
+  }
+
+  .sf-social-list {
+    justify-content: flex-start;
   }
 }

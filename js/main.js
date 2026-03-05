@@ -1,26 +1,71 @@
-let cartItemsCount = 0; // VAlor 
+const cart = {
+    items: [],
+    
+    toggle() {
+        document.getElementById('side-cart').classList.toggle('active');
+        document.getElementById('cart-overlay').classList.toggle('active');
+    },
 
-function addToCart(productId, productName) {
-    cartItemsCount++;
+    add(id, name, price) {
+        const existing = this.items.find(item => item.id === id);
+        
+        if (existing) {
+            existing.qty++;
+        } else {
+            this.items.push({ id, name, price, qty: 1 });
+        }
 
-    const cartCountElement = document.getElementById('cart-count');
-    if (cartCountElement) {
-        cartCountElement.textContent = cartItemsCount;
+        this.updateUI();
+
+        // SweetAlert de éxito
+        Swal.fire({
+            title: '¡Añadido!',
+            text: `${name} está en tu carrito`,
+            icon: 'success',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            background: '#18202b',
+            color: '#fff'
+        });
+    },
+
+    remove(id) {
+        this.items = this.items.filter(item => item.id !== id);
+        this.updateUI();
+    },
+
+    updateUI() {
+        const container = document.getElementById('cart-items');
+        const countSpan = document.getElementById('cart-count');
+        const totalSpan = document.getElementById('cart-total');
+        
+        container.innerHTML = '';
+        let total = 0;
+        let count = 0;
+
+        this.items.forEach(item => {
+            total += item.price * item.qty;
+            count += item.qty;
+            
+            container.innerHTML += `
+                <div class="cart-item">
+                    <div>
+                        <h4>${item.name}</h4>
+                        <small>${item.qty} x $${item.price}</small>
+                    </div>
+                    <button class="remove-btn" onclick="cart.remove(${item.id})">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            `;
+        });
+
+        countSpan.innerText = count;
+        totalSpan.innerText = `$${total.toFixed(2)}`;
     }
+};
 
-    displayConfirmationMessage(productName);
-
-    console.log(`Producto ${productId} (${productName}) añadido al carrito. Total: ${cartItemsCount}`);
-}
-
-function displayConfirmationMessage(name) {
-    const messageElement = document.getElementById('confirmation-message');
-
-    messageElement.innerHTML = `<i class="bi bi-cart-check-fill"></i>"${name}" añadido!`;
-
-    messageElement.classList.add('show');
-
-    setTimeout(() => {
-        messageElement.classList.remove('show');
-    }, 1500);
-}
+// Event listener para el icono del header
+document.querySelector('.cart-icon').addEventListener('click', () => cart.toggle());
