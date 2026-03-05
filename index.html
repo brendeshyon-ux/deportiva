@@ -16,13 +16,20 @@
 
     <header class="main-header">
         <div class="logo">SportFlow</div>
-        <nav>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <nav id="main-nav">
             <a href="#servicios">Servicios</a>
             <a href="#productos">Productos</a>
             <a href="#contacto">Contacto</a>
         </nav>
         <div class="cart-icon">
-            <i class="bi bi-cart-check-fill"></i> Carrito <span id="cart-count" class="cart-count">0</span>
+            <i class="bi bi-cart-check-fill"></i>
+            <span class="d-none d-md-inline">Carrito</span>
+            <span id="cart-count" class="cart-count">0</span>
         </div>
     </header>
 
@@ -210,10 +217,9 @@
 
     </main>
 
-    <!-- Footer de Sport Flow  -->
+    <!-- Footer -->
     <footer class="sf-footer" role="contentinfo">
         <div class="sf-container">
-            <!-- Marca / Logo -->
             <div class="sf-brand">
                 <h2 class="sf-logo">Sport Flow</h2>
                 <p class="sf-tagline">Movimiento. Ritmo. Flow.</p>
@@ -223,9 +229,9 @@
             <!-- Enlaces rápidos -->
             <nav class="sf-links" aria-label="Enlaces del pie de página">
                 <h3 class="sf-heading">Enlaces</h3>
-                <ul class="sf-links-list">  
-                    <li><a  class="sf-link">Términos y condiciones</a></li>
-                    <li><a  class="sf-link">Política de privacidad</a></li>
+                <ul class="sf-links-list">
+                    <li><a class="sf-link">Términos y condiciones</a></li>
+                    <li><a class="sf-link">Política de privacidad</a></li>
                 </ul>
             </nav>
 
@@ -234,8 +240,8 @@
                 <h3 class="sf-heading">Síguenos</h3>
                 <ul class="sf-social-list">
                     <li>
-                        <a target="_blank" rel="noopener noreferrer"
-                            aria-label="Facebook Sport Flow" class="sf-social-link">
+                        <a target="_blank" rel="noopener noreferrer" aria-label="Facebook Sport Flow"
+                            class="sf-social-link">
                             <svg class="sf-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <title>Facebook</title>
                                 <path
@@ -244,8 +250,8 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" rel="noopener noreferrer"
-                            aria-label="Instagram Sport Flow" class="sf-social-link">
+                        <a target="_blank" rel="noopener noreferrer" aria-label="Instagram Sport Flow"
+                            class="sf-social-link">
                             <svg class="sf-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <title>Instagram</title>
                                 <path

@@ -20,6 +20,10 @@ body {
   color: var(--text-color);
 }
 
+.menu-toggle {
+    display: none;
+  }
+
 
 /* ------------------ BODY - TITULOS ------------------ */
 
@@ -174,6 +178,7 @@ nav a:hover {
 
 /* El resplandor inferior (Glow) */
 .service-item::before {
+  background: var(--secondary-color);
   content: "";
   position: absolute;
   bottom: -50px;
@@ -181,7 +186,6 @@ nav a:hover {
   transform: translateX(-50%);
   width: 120px;
   height: 120px;
-  background: var(--secondary-color);
   filter: blur(40px);
   opacity: 0.4;
   transition: opacity 0.4s ease;
@@ -283,7 +287,14 @@ nav a:hover {
   transition: 0.3s;
 }
 
+.add-btn-circle:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.1);
+}
+
 /* --------------- CARRITO LATERAL ---------------*/
+
 .side-cart {
   border-left: 1px solid var(--primary-color);
   position: fixed;
@@ -407,11 +418,11 @@ nav a:hover {
   margin: 0 auto;
 }
 
-.contact-info, 
+.contact-info,
 .contact-form-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-info {
@@ -487,10 +498,10 @@ nav a:hover {
 }
 
 .contact-form-panel form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 415px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 415px;
 }
 
 .contact-form-panel .form-label {
@@ -575,27 +586,24 @@ nav a:hover {
 }
 
 .sf-tagline {
+  color: var(--text-color);
   margin: 0.75rem 0 0;
-  color: var(--sf-muted);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
 }
 
-.sf-contact,
 .sf-links,
 .sf-social {
   flex: 1 1 180px;
   min-width: 160px;
 }
 
-/* Encabezados de sección */
 .sf-heading {
-  margin: 0 0 1.2rem 0;
-  font-size: 1.2rem;
-  font-weight: 700;
   color: var(--primary-color);
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-/* Listas */
 .sf-contact-list,
 .sf-links-list,
 .sf-social-list {
@@ -604,36 +612,14 @@ nav a:hover {
   margin: 0;
 }
 
-/* Contacto y Enlaces (Listas) */
-.sf-contact-item,
 .sf-links-list li {
-  color: var(--sf-muted);
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .sf-link {
   color: var(--sf-muted);
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.sf-legal-text {
-  color: var(--primary-color);
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-/* Enlaces rápidos */
-.sf-links-list li {
-  margin-bottom: 0.8rem;
-}
-
-.sf-link {
-  color: var(--sf-muted);
-  text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: color 0.3s;
 }
 
@@ -643,7 +629,6 @@ nav a:hover {
   text-decoration: none;
 }
 
-/* Redes sociales - íconos */
 .sf-social-list {
   display: flex;
   gap: 0.8rem;
@@ -675,7 +660,6 @@ nav a:hover {
   background: var(--primary-color);
 }
 
-/* Iconos SVG */
 .sf-icon {
   width: 24px;
   height: 24px;
@@ -688,7 +672,6 @@ nav a:hover {
   fill: var(--bg-dark);
 }
 
-/* Línea legal inferior */
 .sf-legal {
   border-top: 1px solid var(--primary-color);
   margin-top: 1rem;
@@ -697,37 +680,179 @@ nav a:hover {
 }
 
 .sf-legal-text {
-  margin: 0;
   color: var(--sf-muted);
-  font-size: 0.95rem;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* ----------------- RESPONSIVE ----------------- */
 
+@media (max-width: 992px) {
 
-@media (max-width: 720px) {
-  .sf-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  /* 1. Navbar  */
 
-  .sf-brand {
-    order: 0;
-  }
-
-  .sf-contact {
-    order: 1;
-  }
-
-  .sf-links {
+  .menu-toggle {
+    display: block !important;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 2rem;
+    cursor: pointer;
     order: 2;
   }
 
-  .sf-social {
+  .main-header {
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .cart-icon {
+    color: var(--primary-color);
+    padding: 10px 20px;
     order: 3;
+    position: relative;
+    z-index: 1050;
+    cursor: pointer;
+  }
+
+  .cart-overlay {
+    z-index: 1999;
+}
+
+  nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    text-align: center;
+    background: rgba(7, 14, 23, 0.95);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+    order: 4;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    margin: 15px 0 !important;
+    font-size: 1.2rem;
+  }
+
+  /* Ocultar botón en escritorio */
+  .menu-toggle {
+    display: none;
+  }
+
+  /* 2. Hero */
+
+  .hero {
+    height: 400px;
+    padding: 0 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  /* 3. Títulos de Secciones */
+  .services h2,
+  .product-showcase h2,
+  #formularioContacto h2 {
+    font-size: 1.8rem;
+    padding: 60px 20px 30px 20px;
+  }
+
+  /* 4. Servicios */
+  .service-item {
+    flex-basis: 100%;
+    margin: 0 15px;
+  }
+
+  /* 5. Productos */
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  /* 6. Contacto */
+  .contact-container {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .contact-info h2 {
+    text-align: center !important;
+  }
+
+  .contact-form-panel {
+    padding: 25px;
+    height: auto;
+  }
+
+  .contact-form-panel form {
+    height: auto;
+    gap: 15px;
+  }
+
+  /* 7. Carrito lateral*/
+  .side-cart {
+    z-index: 2000;
+    width: 100%;
+    right: -100%;
+  }
+
+  /* 8. Footer */
+  .sf-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .sf-social-list {
-    justify-content: flex-start;
+    justify-content: center;
+  }
+
+  .sf-footer {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .sf-brand,
+  .sf-links,
+  .sf-social {
+    flex: 1 1 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .sf-heading {
+    margin-bottom: 0.5rem;
+  }
+
+  .sf-social-list {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
   }
 }

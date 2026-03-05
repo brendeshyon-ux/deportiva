@@ -1,6 +1,6 @@
 const cart = {
     items: [],
-    
+
     toggle() {
         document.getElementById('side-cart').classList.toggle('active');
         document.getElementById('cart-overlay').classList.toggle('active');
@@ -8,7 +8,7 @@ const cart = {
 
     add(id, name, price) {
         const existing = this.items.find(item => item.id === id);
-        
+
         if (existing) {
             existing.qty++;
         } else {
@@ -17,7 +17,6 @@ const cart = {
 
         this.updateUI();
 
-        // SweetAlert de éxito
         Swal.fire({
             title: '¡Añadido!',
             text: `${name} está en tu carrito`,
@@ -40,7 +39,7 @@ const cart = {
         const container = document.getElementById('cart-items');
         const countSpan = document.getElementById('cart-count');
         const totalSpan = document.getElementById('cart-total');
-        
+
         container.innerHTML = '';
         let total = 0;
         let count = 0;
@@ -48,7 +47,7 @@ const cart = {
         this.items.forEach(item => {
             total += item.price * item.qty;
             count += item.qty;
-            
+
             container.innerHTML += `
                 <div class="cart-item">
                     <div>
@@ -67,5 +66,36 @@ const cart = {
     }
 };
 
-// Event listener para el icono del header
-document.querySelector('.cart-icon').addEventListener('click', () => cart.toggle());
+document.querySelector('.cart-icon').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.replace('bi-x-lg', 'bi-list');
+    }
+    cart.toggle();
+});
+
+
+const menuToggle = document.getElementById('menu-toggle');
+const mainNav = document.getElementById('main-nav');
+
+menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('active');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.toggle('bi-list');
+    icon.classList.toggle('bi-x-lg');
+});
+
+document.querySelectorAll('#main-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('bi-list');
+        icon.classList.remove('bi-x-lg');
+    });
+});
+
+document.getElementById('formularioContacto').addEventListener('submit', function (e) {
+    e.preventDefault();
+});
