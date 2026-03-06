@@ -41,3 +41,8 @@ Durante el desarrollo del proyecto se consideraron principios de **UX/UI**, enfo
 - Diseño **responsive**
 - Componentes visuales organizados para facilitar la exploración del contenido
 - Estructura modular para facilitar futuras mejoras
+
+---
+
+# Vista Previa del Proyecto
+[Puedes ver la página aquí.](https://brendeshyon-ux.github.io/deportiva/)
